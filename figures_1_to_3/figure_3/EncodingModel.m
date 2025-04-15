@@ -1,30 +1,19 @@
 clc;clear all;close all;
 %% Get the animals and sessions
 addpath('..\lib\')
-
-
 cPath = 'X:\Widefield'; animals = {'mSM63','mSM64','mSM65','mSM66'};
-
 glmPath = 'X:\Widefield\glm_hmm_models\map_all_subjects_targrate.mat';
 sessiondates = getGlobalGLMHMMSessions(glmPath); %get sessions with GLM-HMM data
 
 fileprefix = 'final'; %map_all_subjects_targrate
-
-
-
-%% Retrain models over different states
-
-%runRidge_overStates(cPath,'CSP22','23-Jun-2020',glmPath);
+%% Train models over different states
 
 for i = 1:length(animals)
     parfor j = 1:length(sessiondates{i})
         fprintf('\nRunning for %s, %s.\n\n',animals{i},sessiondates{i}{j});
-
         runRidge_overStates(cPath,animals{i},sessiondates{i}{j},glmPath, fileprefix);
-
     end
 end
-
 
 %% get the data
 counter = 1;
@@ -125,7 +114,7 @@ legend({'','','Engaged','','','Disengaged','','','',''})
 
 %exportgraphics(gcf,'C:\Data\churchland\PowerpointsPostersPresentations\SFN2022/FridayUpdate\encodingmodel\fullcvr.pdf');
 
-%% get the data - but now with better alignment
+%% get the data
 
 NFRAMES = 75;
 counter = 1;
@@ -235,29 +224,6 @@ ylabel('deltaR^2');
 xlabel('Time (s)')
 legend({'','','','','','Engaged','','','','','','Disengaged'})
 
-%% stats
-stim_a = fulla(:,naninds(2):naninds(3)-1);
-%stim_a = reshape(stim_a,numel(stim_a),[]);
-stim_a = nanmean(stim_a,2);
-stim_b = fullb(:,naninds(2):naninds(3)-1);
-%stim_b = reshape(stim_b,numel(stim_b),[]);
-stim_b = nanmean(stim_b,2);
-[h,p] = ttest(stim_a,stim_b)
-
-delay_a = fulla(:,naninds(3):naninds(4)-1);
-delay_a = nanmean(delay_a,2);
-delay_b = fullb(:,naninds(3):naninds(4)-1);
-delay_b = nanmean(delay_b,2);
-[h,p] = ttest(delay_a,delay_b)
-
-delay_a = fulla(:,naninds(1):naninds(2));
-delay_a = nanmean(delay_a,2);
-delay_b = fullb(:,naninds(1):naninds(2));
-delay_b = nanmean(delay_b,2);
-[h,p] = ttest(delay_a,delay_b)
-
-
-
 %% plot a variance map
 
 counter = 1;
@@ -308,14 +274,14 @@ hcb = colorbar;
 figure;
 mapImg = imshow(a, clims);
 colormap(mapImg.Parent,'inferno'); axis image;
-set(mapImg,'AlphaData',~isnan(mapImg.CData)); %make NaNs transparent.
+set(mapImg,'AlphaData',~isnan(mapImg.CData));
 hcb = colorbar;
 %hcb.Title.String = 'cvR^2';
 
 figure;
 mapImg = imshow(a-b, clims2);
 colormap(mapImg.Parent,'colormap_blueblackred'); axis image;
-set(mapImg,'AlphaData',~isnan(mapImg.CData)); %make NaNs transparent.
+set(mapImg,'AlphaData',~isnan(mapImg.CData)); 
 hcb = colorbar;
 %hcb.Title.String = 'cvR^2';
 
