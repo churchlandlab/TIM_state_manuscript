@@ -1,5 +1,5 @@
 
-function [CorrectRate_unsmoothed, DLC_matrix, Fitted, DLCEnergy_raw, Distance_TIM_raw, Results, State_results, borders] = TIM_analyses...
+function [CorrectRate_unsmoothed, DLC_matrix, Fitted, DLCEnergy_raw, Distance_TIM_raw, State_results, borders] = TIM_analyses...
     (Lateral_allFrames, Bottom_allFrames, aligned_FrameTime, raw_data, smooth_window, outlier_filter, HMM_states)
 
 %% 1st, showing the distribution of the timelength of different task epochs. (baseline is always 15 frames.)
@@ -319,8 +319,8 @@ for a = 1 : num_trial
     
 end
 
-factorTime(factorTime == -3) = 0;   % -3 are non-previous-choice trials
 factorTime = squeeze(factorTime(:, 1, :));
+factorTime(factorTime == -3) = 0;   % -3 are non-previous-choice trials
 
 
 
@@ -501,7 +501,7 @@ Distance_TIM_raw = Distance_TIM;
 
 
 
-
+HMM_states_unsmoothed = HMM_states;
 for i = 1 : (length(borders) - 1)
     CorrectRate(borders(i):borders(i+1)) = smoothdata(CorrectRate(borders(i):borders(i+1)), 'gaussian', smooth_window);
     
@@ -516,8 +516,8 @@ end
 
 
 
-State_results = State_TIM_Motionenergy(HMM_states, Distance_TIM, DLCEnergy, borders(2:end), smooth_window, Distance_TIM_raw);
-State_results.HMM_state = HMM_states;
+State_results = State_TIM_Motionenergy(HMM_states, Distance_TIM, DLCEnergy, borders(2:end));
+State_results.HMM_state = HMM_states_unsmoothed;
 
 
 

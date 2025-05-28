@@ -1,7 +1,7 @@
-mSM63 = load('C:\Users\churchland\Desktop\GitHub_code\Individual_animals\mSM63_GitHub2.mat');
-mSM64 = load('C:\Users\churchland\Desktop\GitHub_code\Individual_animals\mSM64_GitHub2.mat');
-mSM65 = load('C:\Users\churchland\Desktop\GitHub_code\Individual_animals\mSM65_GitHub2.mat');
-mSM66 = load('C:\Users\churchland\Desktop\GitHub_code\Individual_animals\mSM66_GitHub2.mat');
+mSM63 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM63_shared.mat');
+mSM64 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM64_shared.mat');
+mSM65 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM65_shared.mat');
+mSM66 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM66_shared.mat');
 
 
 

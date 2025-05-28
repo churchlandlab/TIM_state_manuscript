@@ -1,4 +1,4 @@
-function [Results] = State_TIM_Motionenergy(HMM_state, TIM, motionEnergy, session_borders, smoothwindow, raw_TIM)
+function [Results] = State_TIM_Motionenergy(HMM_state, TIM, motionEnergy, session_borders)
 
 global mouse_name
 mousename = mouse_name;

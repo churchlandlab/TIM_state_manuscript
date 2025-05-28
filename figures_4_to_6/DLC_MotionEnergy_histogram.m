@@ -1,7 +1,7 @@
-mSM63 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM63_results.mat');
-mSM64 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM64_results.mat');
-mSM65 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM65_results.mat');
-mSM66 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM66_results.mat');
+mSM63 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM63_shared.mat');
+mSM64 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM64_shared.mat');
+mSM65 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM65_shared.mat');
+mSM66 = load('C:\Users\churchland\Desktop\State-TIM paper double check\mSM66_shared.mat');
 
 
 [all_engaged, all_disengaged] = GroupTrialsEnergy(mSM63);

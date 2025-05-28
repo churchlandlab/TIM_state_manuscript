@@ -57,7 +57,7 @@ Movement_Energy(Lateral_allFrames, Bottom_allFrames, aligned_FrameTime, Behave_D
 
 
 %% 4th, task-independent-movement (TIM) calculation 
-[Outcome, DLC, Fitted, DLCEnergy, TIM, Results, State_results, borders] = TIM_analyses(Lateral_allFrames, Bottom_allFrames, aligned_FrameTime, Behave_Date, 50, outlier_filter, HMM_states);
+[Outcome, DLC, Fitted, DLCEnergy, TIM, State_results, borders] = TIM_analyses(Lateral_allFrames, Bottom_allFrames, aligned_FrameTime, Behave_Date, 50, outlier_filter, HMM_states);
 
 
 
@@ -70,6 +70,6 @@ Pupil_plot = Pupil_performance_state(fillPupil, Behave_Date, HMM_states, 50);   
 
 
 %% 6th, save the results for further analyses (combining animals together)
-save(['C:\Users\churchland\Desktop\State-TIM paper double check\', mouse_name, '_results.mat'], 'Outcome', 'DLC', 'Fitted', 'DLCEnergy', 'TIM', 'Results', 'State_results', 'borders', "-mat");
+save(['C:\Users\churchland\Desktop\State-TIM paper double check\', mouse_name, '_shared.mat'], 'Outcome', 'DLC', 'Fitted', 'DLCEnergy', 'TIM', 'State_results', 'borders', "-mat");
 
 end
